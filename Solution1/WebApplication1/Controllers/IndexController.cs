@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -13,9 +14,17 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Contact()
         {
-            return View();
+            var model = new ContactModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactModel model)
+        {
+            return View(model);
         }
     }
 }
