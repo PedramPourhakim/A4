@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebApplication1.Models
 {
@@ -16,7 +17,8 @@ namespace WebApplication1.Models
         [EmailAddress(ErrorMessage = "آدرس ایمیل صحیح نیست!")]
         public string Email { get; set; }
         public string Message { get; set; }
-        public string Service { get; set; }
+        public int Service { get; set; }
+        public SelectList Services { get; set; }
         
     }
 }
