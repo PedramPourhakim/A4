@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication1.Models;
+using WebApplication1.ProjectsData;
 
 namespace WebApplication1.Controllers
 {
+    [Route("")]
     public class IndexController : Controller
     {
         private readonly List<Service> _services = new List<Service>
@@ -17,12 +19,20 @@ namespace WebApplication1.Controllers
             new Service(3,"پلاتین"),
             new Service(4,"الماس")
         };
+        [Route("")]
         public IActionResult Index()
         {
             return View();
         }
-
-        [HttpGet]
+        [Route("ProjectDetails")]
+        public IActionResult ProjectDetails(long id)
+        {
+            ProjectsStore Store = new ProjectsStore();
+            var project = Store.GetKhasTarinBy(id);
+            return View(project);
+        }
+        [HttpGet("MyContactPage")]
+        //[Route("MyContactPage")]
         public IActionResult Contact()
         {
             var model = new ContactModel
